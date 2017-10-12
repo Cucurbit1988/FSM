@@ -9,7 +9,9 @@ public class FSMSystem  {
 
 	public void Update(GameObject npc){
 		currenState.Act (npc);
-	}
+        currenState.Reason(npc);
+
+    }
 
 	public void AddState(FSMState s){
 		Debug.Log ("=============");

@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 //转换条件
 public enum Transition{
 	NullTransiton=0,
+	SeePlayer=1,
 }
 
 //状态id
 public enum StateID{
 	NullStateId=0,
 	Patrol=1,
+	Chase=2,
 }
 
 public abstract class FSMState{

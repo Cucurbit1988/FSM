@@ -6,6 +6,7 @@ public class PatrolState : FSMState {
 
 	private List<Transform> path = new List<Transform> ();
 	private int index;
+    private Transform playerTransform;
 
 	public PatrolState(FSMSystem fsm):base(fsm)
 	{
@@ -17,7 +18,9 @@ public class PatrolState : FSMState {
 				path.Add (item);
 			}
 		}
-	}
+        playerTransform = GameObject.Find("Player").transform;
+
+    }
 
 	public override void Act (GameObject npc)
 	{
@@ -30,7 +33,11 @@ public class PatrolState : FSMState {
 	}
 	public override void Reason (GameObject npc)
 	{
-//		throw new System.NotImplementedException ();
+        if (Vector3.Distance(playerTransform.position,npc.transform.position)<3)
+        {
+            fsm.PerformTransiton(Transition.SeePlayer);
+        }
+
 	}
 
 }
